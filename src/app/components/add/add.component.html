@@ -1,0 +1,42 @@
+<form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Add Item</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-add">
+
+        <mat-form-field>
+          <input matInput formControlName="name" placeholder="Name">
+          <mat-error
+            *ngIf="itemForm.get('name')?.invalid && (itemForm.get('name')?.dirty || itemForm.get('name')?.touched)">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput formControlName="description" placeholder="Description" />
+          <mat-error
+            *ngIf="itemForm.get('description')?.invalid && (itemForm.get('description')?.dirty || itemForm.get('description')?.touched)">
+            Description is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="itemForm.get('category')?.invalid && (itemForm.get('category')?.dirty || itemForm.get('category')?.touched)">
+            Category is required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="m-3">
+      <button mat-flat-button color="primary" type="submit" [disabled]="itemForm.invalid">{{isEdit? 'Update': 'Add'}}</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

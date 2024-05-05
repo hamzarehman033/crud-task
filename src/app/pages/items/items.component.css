@@ -1,0 +1,13 @@
+.template-list{
+    margin: 1rem;
+    margin: auto;
+    max-width: 70%;
+    display: flex;
+    gap: 10px;
+}
+.w-25{
+    width: 25%;
+}
+.w-75{
+    width: 75%;
+}
